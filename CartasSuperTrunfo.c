@@ -1,8 +1,24 @@
 #include <stdio.h>
 #include <string.h>
 
+// Desafio Super Trunfo - Países
+// Tema 1 - Cadastro das cartas
+// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
+
+// No desafio acabei optando por algumas coisas que ainda não foram passado em aula, por eu já
+// possuir algum tipo de conhecimento prévio em programação, como objetos, arrays e etc (Typescript)
+// Então como a questão de logina não muda, precisei apenas estudar a sintaxe em C para conseguir
+// implementrar algumas coisas que eu já conhecia de outras linguagens nesse desafio.
+// Tentei manter um padrão de nomes usando snake_case para variaveis e tentei deixar o mais claro possivel
+// Tudo o que acontece no código, para facilitar o entendimento de quem for analisar o código depois.
+
+// Definição da estrutura da carta
 typedef struct
 {
+  // Área para definição das variáveis para armazenar as propriedades das cidade
+  // Estou usando variaveis em inglês como parte do estudo também.
+  // Nas pesquisas vi que na linguagem C é mais comum usar nomes de variáveis em snake case
+
   int card_id, population, number_of_tourist_attractions;
   float population_density, gdp_per_capita;
   char city_name[50], state;
@@ -21,12 +37,15 @@ double calculate_super_power(const Card *card)
          (double)card->gdp_per_capita;
 }
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das cartas
-// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
-
 // Função que faz a comparação entre quem vai ganhar
 const char *check_powers(double card1, double card2)
+// Nos meus estudos vi que ao comparar double pode causar algum tipo de erro
+// E para evitar esse erro é criado uma função que cria uma margem de erro que chamamos de epsilon
+// Porém nesse momento acreditei que não preciso me aprofundar tanto, e quando realmente preciar dessa
+// comparação mais precisa, irei estudar mais sobre o assunto.
+
+// Eu quis criar uma função que me retornasse o ganhador de cada atributo da carta.
+// Então criei essa função para comparar os valores e me retornar uma string com a carta que ganhou.
 {
   if (card1 > card2)
   {
@@ -44,10 +63,7 @@ const char *check_powers(double card1, double card2)
 
 int main()
 {
-  // Área para definição das variáveis para armazenar as propriedades das cidades
-
-  // Estou usando variaveis em inglês como parte do estudo também.
-  // Nas pesquisas vi que na linguagem C é mais comum usar nomes de variáveis em snake case
+  // Declaro o uso da strutura Card para criar as cartas
   Card card1;
   Card card2;
 
@@ -159,6 +175,8 @@ int main()
   }
 
   printf("\n---------------------------------------------------\n");
+
+  // Área para realizar as batalhas entre as cartas
 
   printf("Hora da batalha!");
 

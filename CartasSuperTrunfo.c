@@ -10,6 +10,7 @@ typedef struct
   double super_power;
 } Card;
 
+// FUnção que automatiza o calculo do super_power da carta.
 double calculate_super_power(const Card *card)
 {
   return (double)card->population +
@@ -23,6 +24,23 @@ double calculate_super_power(const Card *card)
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
 // Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
+
+// Função que faz a comparação entre quem vai ganhar
+const char *check_powers(double card1, double card2)
+{
+  if (card1 > card2)
+  {
+    return "Card1 ganhou";
+  }
+  else if (card1 == card2)
+  {
+    return "Empate";
+  }
+  else
+  {
+    return "Card2 ganhou";
+  }
+}
 
 int main()
 {
@@ -131,18 +149,26 @@ int main()
     printf("Estado: %c \n", card2.state);
     printf("Cidade: %s \n", card2.city_name);
     printf("Código da carta: %c%02d \n", card2.state, card2.card_id);
-    printf("População: %d \n", card2.population);
-    printf("Área: %.2f km² \n", card2.area);
-    printf("PIB: %.2f bilhões \n", card2.gdp);
-    printf("Pontos Turísticos: %d \n", card2.number_of_tourist_attractions);
-    printf("Densidade populacional: %.2f hab/km² \n", card2.population_density);
-    printf("PIB per capita: %.2f reais \n", card2.gdp_per_capita);
-    printf("Super Poder: %.2f \n", card2.super_power);
+    printf("População: %d \n", card2.population);                                // batalha 1
+    printf("Área: %.2f km² \n", card2.area);                                     // Batalha 2
+    printf("PIB: %.2f bilhões \n", card2.gdp);                                   // Batalha 3
+    printf("Pontos Turísticos: %d \n", card2.number_of_tourist_attractions);     // Batalha 4
+    printf("Densidade populacional: %.2f hab/km² \n", card2.population_density); // Batalha 5
+    printf("PIB per capita: %.2f reais \n", card2.gdp_per_capita);               // Batalha 6
+    printf("Super Poder: %.2f \n", card2.super_power);                           // Batalha 7
   }
 
   printf("\n---------------------------------------------------\n");
 
   printf("Hora da batalha!");
+
+  printf("População: %s \n", check_powers((double)card1.population, (double)card2.population));                                               // batalha 1
+  printf("Área: %s \n", check_powers((double)card1.area, (double)card2.area));                                                                // Batalha 2
+  printf("PIB: %s \n", check_powers((double)card1.gdp, (double)card2.gdp));                                                                   // Batalha 3
+  printf("Pontos Turísticos: %s \n", check_powers((double)card1.number_of_tourist_attractions, (double)card2.number_of_tourist_attractions)); // Batalha 4
+  printf("Densidade populacional: %s \n", check_powers((double)card1.population_density, (double)card2.population_density));                  // Batalha 5
+  printf("PIB per capita: %s \n", check_powers((double)card1.gdp_per_capita, (double)card2.gdp_per_capita));                                  // Batalha 6
+  printf("Super Poder: %s \n", check_powers(card1.super_power, card2.super_power));                                                           // Batalha 7
 
   return 0;
 }

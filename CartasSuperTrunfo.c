@@ -4,10 +4,21 @@
 typedef struct
 {
   int card_id, population, number_of_tourist_attractions;
-  float population_density, gdp_per_capita, super_power;
+  float population_density, gdp_per_capita;
   char city_name[50], state;
   float area, gdp;
+  double super_power;
 } Card;
+
+double calculate_super_power(const Card *card)
+{
+  return (double)card->population +
+         (double)card->area +
+         (double)card->gdp +
+         (double)card->number_of_tourist_attractions +
+         (double)card->population_density +
+         (double)card->gdp_per_capita;
+}
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
@@ -56,7 +67,9 @@ int main()
     card1.population_density = card1.population / card1.area;
 
     card1.gdp_per_capita = (card1.gdp * billion) / card1.population; // Multiplico por 1000 para converter de bilhões para milhões
+    card1.super_power = calculate_super_power(&card1);
   }
+
   printf("---------------------------------------------------\n");
 
   printf("\n Insira os dados da segunda carta \n");
@@ -88,7 +101,10 @@ int main()
     card2.population_density = card2.population / card2.area;
 
     card2.gdp_per_capita = (card2.gdp * 1e9f) / card2.population; // Multiplico por 1000 para converter de bilhões para milhões
+
+    card2.super_power = calculate_super_power(&card2);
   }
+
   printf("---------------------------------------------------\n");
 
   // Área para exibição dos dados da cidade
@@ -105,6 +121,7 @@ int main()
     printf("Pontos Turísticos: %d \n", card1.number_of_tourist_attractions);
     printf("Densidade populacional: %.2f hab/km² \n", card1.population_density);
     printf("PIB per capita: %.2f reais \n", card1.gdp_per_capita);
+    printf("Super Poder: %.2f \n", card1.super_power);
   }
   printf("---------------------------------------------------\n");
 
@@ -120,6 +137,7 @@ int main()
     printf("Pontos Turísticos: %d \n", card2.number_of_tourist_attractions);
     printf("Densidade populacional: %.2f hab/km² \n", card2.population_density);
     printf("PIB per capita: %.2f reais \n", card2.gdp_per_capita);
+    printf("Super Poder: %.2f \n", card2.super_power);
   }
 
   printf("\n---------------------------------------------------\n");
